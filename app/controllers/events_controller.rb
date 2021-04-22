@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params)
-		if event.save
+		if @event.save
 			flash[:notice] = "Event created!"
 			redirect_to @event
 		else
@@ -15,6 +15,11 @@ class EventsController < ApplicationController
 	end
 
 	def show
+		@event = Event.find(params[:id])
+	end
+
+	def index
+		@events = Event.all		
 	end
 
 	private
