@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
+gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
