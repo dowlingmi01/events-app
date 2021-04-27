@@ -10,12 +10,16 @@
 	<div class="col-sm-3 pull-right">
 		<div class="sidebar">
 			<h3 class="discover">Discover</h3>
-			<ul class="nav nav-pills nav-stacked"></ul>
+			<ul class="nav nav-pills nav-stacked">
+				<li class="<%= "active" if current_page?("/events")%>"><%= link_to "ALL EVENTS", events_path %></li>
+		</ul>
 		</div>
 	</div>
-</div>
+
+
 <div class= .col-sm-9>
 	<h3>Discover and register to attend your favorite events right here</h3>
+</div>
 
 <% @events.each do |event| %>
 	<div class="col-sm-9 pull-left">
@@ -37,3 +41,4 @@
 			<% end %>
 	</div>
 <% end %>
+</div>
