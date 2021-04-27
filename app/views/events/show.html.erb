@@ -9,7 +9,7 @@
 	</ul>
 </header>
 
-<div class="new">
+<div class="row">
 	<div class= "col-sm-9">
 		<%= image_tag "https://via.placeholder.com/1080x500", class: "event-image" %>
 
@@ -29,22 +29,22 @@
 	<div class="col-sm-3">
 		<div class="sidebar">
 			<h4 class="organizer">Organizer Name</h4>
-			<p><span class= "event-venue"><%= @event.venue %>, <strong><%= @event.location  %></strong></span></p>
+			<p>
+				<span class= "event-venue"><%= @event.venue %>, <strong><%= @event.location  %></strong></span>
+			</p>
 		</div>
-
-		<br>
+		<hr>
 		<div class="sidebar">
 			<h4 class="tags">Tags</h4>
 		</div>
-		<br>
+		<hr>
 		<div class="sidebar">
 			<h4 class="attendees">Attendees</h4>
 		</div>
-		<br>
+		<hr>
 		<div class="sidebar">
 			<h4 class="likes">Likes</h4>
 		</div>
-</div>
-
+	</div>
 </div>
 
