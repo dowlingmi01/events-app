@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,11 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="<%= "active" if current_page?("/")%>"><%= link_to "Home", root_path %></li>
-        <li class="<%= "active" if current_page?("/events")%>"><%= link_to "Events", events_path %></li>
+        <li class="<%= 'active' if current_page?(root_path)%>"><%= link_to "Home", root_path %></li>
+        <li class="<%= 'active' if current_page?(events_path)%>"><%= link_to "Events", events_path %></li>
         <% unless user_signed_in? %>
-          <li class="<%= "active" if current_page?("/users/sign_up")%>"><%= link_to "Sign up", new_user_registration_path %></li>
-          <li class="<%= "active" if current_page?("/users/sign_in")%>"><%= link_to "Sign in", new_user_session_path %></li>
+          <li class="<%= 'active' if current_page?(new_user_registration_path)%>"><%= link_to "Sign up", new_user_registration_path %></li>
+          <li class="<%= 'active' if current_page?(new_user_session_path)%>"><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>
       </ul>
        <%= form_tag events_path, class: "navbar-form navbar-left", method: :get do  %>
@@ -30,7 +30,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-        <li class="<%= "active" if current_page?("/users/edit")%>"> <%= link_to current_user.email, edit_user_registration_path %>
+        <li class="<%= 'active' if current_page?(user_session_path)%>"> <%= link_to current_user.username, edit_user_registration_path %>
         <li>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% end %>
