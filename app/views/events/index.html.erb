@@ -11,7 +11,7 @@
 		<div class="sidebar">
 			<h3 class="discover">Discover</h3>
 			<ul class="nav nav-pills nav-stacked">
-				<li class="<%= "active" if current_page?("/events")%>"><%= link_to "ALL EVENTS", events_path %></li>
+				<li class="<%= 'active' if current_page?(events_path)%>"><%= link_to "ALL EVENTS", events_path %></li>
 		</ul>
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 						</p>
 						<p class="lead-time">
 							<span class="event-start"><%= time_format(event.start_date) %></span>
-							<span class="float-right">Organized by: <%= event.organizer.username %> </span>
+							<span class="float-right">Organized by: <%= event.organizer %> </span>
 						</p>						
 					</div>			
 				</div>
