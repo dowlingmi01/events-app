@@ -1,21 +1,27 @@
 class EventsController < ApplicationController
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show]
-	before_action :authorize_owner!, only: [:edit, :update, :destroy]
+	# before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	def index
-		@events = Event.order(created_at: :desc)	
+		@events = Event.order(created_at: :desc)
+		authorize @events, :index?
 	end
 
 	def show
+		authorize @event, :show?
 	end
 
 	def new
 		@event = Event.new
+
+		authorize @event, :new?
 	end
 
 	def create
 		@event = Event.new(event_params)
+
+		authorize @event, :create?
 		@event.organizer = current_user
 
 		if @event.save 
@@ -29,10 +35,11 @@ class EventsController < ApplicationController
 
 
 	def edit
+		authorize @event, :edit?
 	end
 
 	def update
-
+		authorize @event, :update?
 		if @event.update(event_params)
 			flash[:notice] = "Event updated successfully"
 			redirect_to @event
@@ -43,6 +50,7 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
+		authorize @event, :destroy?
 		@event.destroy
 		flash[:alert] = "Event deleted successfully"
 		redirect_to events_url
@@ -53,6 +61,8 @@ class EventsController < ApplicationController
 	def set_event
 		@event = Event.find(params[:id])
 
+		# authorize @event
+		
 		rescue ActiveRecord::RecordNotFound
 			flash[:alert] #= "The page you requested does not exist"
 			redirect_to events_path
@@ -62,11 +72,11 @@ class EventsController < ApplicationController
 		params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
 	end
 
-	def authorize_owner!
-		authenticate_user!
-		unless @event.organizer == current_user
-			flash[:alert] = "You do not have authorization to '#{action_name}' the #{@event.title.upcase}"
-			redirect_to events_path
-		end 
-	end
+	# def authorize_owner!
+	# 	authenticate_user!
+	# 	unless @event.organizer == current_user
+	# 		flash[:alert] = "You do not have authorization to '#{action_name}' the #{@event.title.upcase}"
+	# 		redirect_to events_path
+	# 	end 
+	# end
 end
