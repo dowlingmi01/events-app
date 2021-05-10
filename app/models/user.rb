@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
 
     # attr_accessor :first_name, :last_name, :user_name, :username, :organization_name
 
@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
 	def to_s
 		"#{username}"
+	end
+
+	def full_name
+		"#{first_name} #{last_name}"
 	end
 
 end
