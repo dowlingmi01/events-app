@@ -19,7 +19,7 @@
         <li class="<%= 'active' if current_page?(courses_path)%>"><%= link_to "Courses", courses_path %></li>
 
         <% admins_only do %>
-          <li class="<%= 'active'if current_page?("/admin")%>"><%= link_to "Admin", admin_root_path %></li>
+          <li class="<%= 'active'if current_page?('/admin')%>"><%= link_to "Admin", admin_root_path %></li>
         <% end %>
 
         <% unless user_signed_in? %>
