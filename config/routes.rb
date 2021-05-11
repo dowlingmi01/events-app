@@ -6,8 +6,11 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
   devise_for :users
-	root 'events#index'
-	resources :users, only: [:show]
-	resources :events
+
+  resources :users, only: [:show]
+  resources :categories, only: [:show]
+  root 'events#index'
+
+  resources :events
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

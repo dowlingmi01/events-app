@@ -30,7 +30,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 			flash[:notice] = "Category has been updated."
 			redirect_to admin_categories_path
 		else
-			flash.now[:alert] = "Category has not been updated"
+			flash.now[:alert] = "Category has not been updated."
 			render "edit"
 		end
 	end
