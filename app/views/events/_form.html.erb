@@ -3,7 +3,8 @@
 		
 <%= simple_form_for(event) do |f| %>
 	<%= f.input :title %>
-	<%= f.input :description %>
+	<%= f.label :description %>
+	<%= f.rich_text_area :description %>
 	<%= f.input :start_date, as: :datetime, html: true, start_year: Date.today.year, ampm: true, order: [:month, :day, :year] %>
 	<%= f.input :end_date, as: :datetime, html: true, start_year: Date.today.year, ampm: true, order: [:month, :day, :year] %>
 	<%= f.input :venue %>
