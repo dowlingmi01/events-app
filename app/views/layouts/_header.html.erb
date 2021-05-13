@@ -37,7 +37,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="<%= 'active' if current_page?(user_session_path)%>"><%= link_to edit_user_registration_path do%>
-            <span>image</span> <%= current_user.username %>
+            <span></span> <%= current_user.username %>
           <% end %>
         <li>
         <li class="<%= 'active' if current_page?(user_session_path)%>"> <%= link_to "My Events", user_path(current_user) %>

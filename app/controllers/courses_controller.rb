@@ -62,12 +62,18 @@ class CoursesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_course
-      @course = Course.find(params[:id])
+      @course = Course.friendly.find(params[:id])
+
+      rescue ActiveRecord::RecordNotFound
+        flash[:alert] #= "The page you requested does not exist"
+        redirect_to events_path
+
     end
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:title, :description, :text)
+      params.require(:course).permit(:title, :description, :text, :short_description)
     end
 end

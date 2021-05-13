@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 	private
 
 		def set_category
-			@category = Category.find(params[:id])
+			@category = Category.friendly.find(params[:id])
 
 		rescue ActiveRecord::RecordNotFound
 			flash[:alert] = "The category you just requested could not be found."
