@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :username
 
     # attr_accessor :first_name, :last_name, :user_name, :username, :organization_name
 
