@@ -27,13 +27,13 @@
           <li class="<%= 'active' if current_page?(new_user_session_path)%>"><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>
       </ul>
-       <%= form_tag events_path, class: "navbar-form navbar-left", method: :get do  %>
+<!--        <%= form_tag events_path, class: "navbar-form navbar-left", method: :get do  %>
           <div class="form-group">
             <%= text_field_tag :query, params[:query], placeholder: "Search events here..", class: "form-control" %>
           </div>
             <%= submit_tag "Submit", class: "btn btn-default" %>
         <% end %>
-
+ -->
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
         <li class="<%= 'active' if current_page?(user_session_path)%>"><%= link_to edit_user_registration_path do%>
