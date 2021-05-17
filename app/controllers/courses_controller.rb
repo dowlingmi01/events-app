@@ -6,7 +6,11 @@ class CoursesController < ApplicationController
   # before_action :authorize_owner!, only: [:edit, :update, :destroy]
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    if params[:query].present?
+      @courses = Course.search(params[:query])
+    else
+      @courses = Course.order(created_at: :desc)      
+    end
   end
 
   # GET /courses/1 or /courses/1.json

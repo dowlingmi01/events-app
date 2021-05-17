@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_155414) do
+ActiveRecord::Schema.define(version: 2021_05_17_194800) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_155414) do
     t.integer "user_id", null: false
     t.string "image"
     t.string "slug"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
     t.index ["user_id"], name: "index_events_on_user_id"
   end

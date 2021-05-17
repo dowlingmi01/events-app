@@ -1,26 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1>Conversations</h1>
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'New Conversation', new_course_path %>
 
-<% @courses.each do |course| %>
-  <div class="container">
-      <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="https://picsum.photos/200" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= course.title %></h5>
-          <p class="card-text"><%= course.short_description %></p>
-          <%= link_to 'Show', course %>
-          <%= link_to 'Edit', edit_course_path(course) %>
-          <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="container">
+  <div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-lg-3">
+        <div class="card" style="width: 25rem;">
+          <img class= "card-img-top" src="https://picsum.photos/200" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= course.title %></h5>
+            <p class="card-text"><%= course.short_description %></p>
+            <%= link_to 'Show', course %>
+            <%= link_to 'Edit', edit_course_path(course) %>
+            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
-      </div>
-      <br>
+        <br>
+    </div>
+  <% end %>    
   </div>
-<% end %>
+</div>
+
+<!-- <div class="search">
+  <div class= "col-sm-9">
+    <h4>Search courses</h4>
+    <%= form_tag courses_path, class: "form-horizontal", method: :get do %>
+      <div class="form-group form-group-lg">
+        <div class="col-sm-10">
+          <%= text_field_tag :query, params[:query], placeholder: "Search courses", autofocus: true, class: "form-control" %>
+        </div>
+        <div class="col-sm-2">
+          <%= submit_tag "Find", class: "btn btn-default btn-lg" %>
+          <% if params[:query].present? %>
+            <%= link_to "Clear", courses_path %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+<br>
 
 <% @courses.each do |course| %>
   <div class="col-sm-9 float-left">
@@ -43,3 +66,4 @@
   </div>
 <% end %>
 
+ -->
